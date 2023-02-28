@@ -1,14 +1,15 @@
 import AnchorLink from "react-anchor-link-smooth-scroll"
-import PropTypes from 'prop-types'
+
+import { SelectedPage } from "@/shared/types"
 
 type Props = {
   page: string
-  selectedPage: string
-  setSelectedPage: (value: string) => void
+  selectedPage: SelectedPage
+  setSelectedPage: (value: SelectedPage) => void
 }
 
 const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
-  const lowerCasePage: string = page.toLowerCase().replace(/ /g,"")
+  const lowerCasePage = page.toLowerCase().replace(/ /g,"") as SelectedPage
 
   return (
     <AnchorLink
@@ -21,12 +22,6 @@ const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
       {page}
     </AnchorLink>
   )
-}
-
-Link.propTypes = {
-  page: PropTypes.string,
-  selectedPage: PropTypes.string.isRequired,
-  setSelectedPage: PropTypes.func.isRequired,
 }
 
 export default Link

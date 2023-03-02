@@ -1,21 +1,26 @@
 import React from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+
 import Logo from '@/assets/Logo.png'
 import Link from './Link'
 
+import Button from '@/shared/Button'
+import ActionButton from '@/shared/ActionButton'
+
 import { SelectedPage } from '@/shared/types'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 type Props = {
   selectedPage: SelectedPage
   setSelectedPage: (value: SelectedPage) => void
 }
 
+const flexBetween: String = "flex items-center justify-between"
+
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const [isMenuToogled, setIsMenuToggled] = React.useState<boolean>(false)
-  const flexBetween: String = "flex items-center justify-between"
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
+  const isAboveMediumScreens: Boolean = useMediaQuery("(min-width: 1060px)")
 
   return (
     <nav>
@@ -54,8 +59,8 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
                   </div>
 
                   <div className={`${flexBetween} gap-8`}>
-                    <p>Sign In</p>
-                    <button>Become a Member</button>
+                    <Button>Sign In</Button>
+                    <ActionButton setSelectedPage={setSelectedPage}>Become a Member</ActionButton>
                   </div>
                 </div>
               ) : (

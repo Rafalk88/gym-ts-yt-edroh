@@ -4,3 +4,10 @@ export enum SelectedPage {
   OurClasses = "ourclasses",
   ContactUs = "contactus",
 }
+
+export enum ButtonVariants {
+  Link = 'link',
+  Action = 'action',
+  Primary = 'primary',
+  Secondary = 'secondary'
+}

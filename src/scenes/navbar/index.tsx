@@ -3,13 +3,10 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
+import Button from '@/components/Button'
+import { ButtonVariants, SelectedPage } from '@/shared/types'
+
 import Logo from '@/assets/Logo.png'
-import Link from './Link'
-
-import Button from '@/shared/Button'
-import ActionButton from '@/shared/ActionButton'
-
-import { SelectedPage } from '@/shared/types'
 
 type Props = {
   selectedPage: SelectedPage
@@ -36,31 +33,41 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
               (
                 <div className={`${flexBetween} w-full`}>
                   <div className={`${flexBetween} gap-8 text-sm`}>
-                    <Link 
-                      page={"Home"}
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href="Home"
                       selectedPage={selectedPage}
                       setSelectedPage={setSelectedPage}
-                    />
-                    <Link 
-                      page={"Benefits"}
+                    >Home</Button>
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href="Benefits"
                       selectedPage={selectedPage}
                       setSelectedPage={setSelectedPage}
-                    />
-                    <Link 
-                      page={"Our Classes"}
+                    >Benefits</Button>
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href={"Our Classes"}
                       selectedPage={selectedPage}
                       setSelectedPage={setSelectedPage}
-                    />
-                    <Link 
-                      page={"Contact"}
+                    >Our Classes</Button>
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href="Contact"
                       selectedPage={selectedPage}
                       setSelectedPage={setSelectedPage}
-                    />
+                    >Contact</Button>
                   </div>
 
                   <div className={`${flexBetween} gap-8`}>
-                    <Button>Sign In</Button>
-                    <ActionButton setSelectedPage={setSelectedPage}>Become a Member</ActionButton>
+                    <p>Sign In</p>
+                    <Button
+                      variant={ButtonVariants.Action}
+                      href={SelectedPage.ContactUs}
+                      setSelectedPage={setSelectedPage}
+                    >
+                      Become a Member
+                    </Button>
                   </div>
                 </div>
               ) : (

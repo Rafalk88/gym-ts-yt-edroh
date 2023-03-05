@@ -60,7 +60,13 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
                   </div>
 
                   <div className={`${flexBetween} gap-8`}>
-                    <p>Sign In</p>
+                    <Button
+                      variant={ButtonVariants.Secondary}
+                      href="./"
+                      setSelectedPage={setSelectedPage}
+                    >
+                      Sign In
+                    </Button>
                     <Button
                       variant={ButtonVariants.Action}
                       href={SelectedPage.ContactUs}
@@ -83,6 +89,50 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           </div>
         </div>
       </div>
+
+      {!isAboveMediumScreens && isMenuToogled && (
+        <section className="fixed right-0 bottom-0 z-40 h-full w-[300px]
+        bg-primary-100 drop-shadow-xl"
+        >
+          <div className="flex justify-end p-12">
+            <button
+              type="button"
+              onClick={() => setIsMenuToggled(!isMenuToogled)}
+            >
+              <XMarkIcon 
+                className="h-6 w-6 text-gray-400"
+              />
+            </button>
+          </div>
+
+          <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href="Home"
+                      selectedPage={selectedPage}
+                      setSelectedPage={setSelectedPage}
+                    >Home</Button>
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href="Benefits"
+                      selectedPage={selectedPage}
+                      setSelectedPage={setSelectedPage}
+                    >Benefits</Button>
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href={"Our Classes"}
+                      selectedPage={selectedPage}
+                      setSelectedPage={setSelectedPage}
+                    >Our Classes</Button>
+                    <Button
+                      variant={ButtonVariants.Link}
+                      href="Contact"
+                      selectedPage={selectedPage}
+                      setSelectedPage={setSelectedPage}
+                    >Contact</Button>
+                  </div>
+        </section>
+      )}
     </nav>
   )
 }

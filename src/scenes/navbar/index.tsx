@@ -46,7 +46,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                         return (
                           <Button
                             key={item.id}
-                            variant={ButtonVariants.Link}
+                            variant={ButtonVariants.Menu}
                             href={item.content}
                             selectedPage={selectedPage}
                             setSelectedPage={setSelectedPage}
@@ -110,7 +110,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               return (
                 <Button
                   key={item.id}
-                  variant={ButtonVariants.Link}
+                  variant={ButtonVariants.Menu}
                   href={item.content}
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}

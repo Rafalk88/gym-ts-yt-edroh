@@ -6,7 +6,8 @@ export enum SelectedPage {
 }
 
 export enum ButtonVariants {
-  Link = 'link',
+  Basic = 'basic',
+  Menu = 'menu',
   Action = 'action',
   Primary = 'primary',
   Secondary = 'secondary'

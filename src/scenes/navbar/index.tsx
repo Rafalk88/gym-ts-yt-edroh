@@ -9,19 +9,27 @@ import { ButtonVariants, SelectedPage } from '@/shared/types'
 import Logo from '@/assets/Logo.png'
 
 type Props = {
+  isTopOfPage: Boolean
   selectedPage: SelectedPage
   setSelectedPage: (value: SelectedPage) => void
 }
 
-const flexBetween: String = "flex items-center justify-between"
+const flexBetween = "flex items-center justify-between"
+const menu = [
+  {id: 1, content: "Home"},
+  {id: 2, content: "Benefits"},
+  {id: 3, content: "Our Classes"},
+  {id: 4, content: "Contact"},
+]
 
-const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
+const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToogled, setIsMenuToggled] = React.useState<boolean>(false)
   const isAboveMediumScreens: Boolean = useMediaQuery("(min-width: 1060px)")
+  const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow"
 
   return (
     <nav>
-      <div className={`${flexBetween} fixed top-0 z-30 w-full py-6`}>
+      <div className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6`}>
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             <figure>
@@ -33,30 +41,21 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
               (
                 <div className={`${flexBetween} w-full`}>
                   <div className={`${flexBetween} gap-8 text-sm`}>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href="Home"
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Home</Button>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href="Benefits"
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Benefits</Button>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href={"Our Classes"}
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Our Classes</Button>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href="Contact"
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Contact</Button>
+                    {
+                      menu.map((item) => {
+                        return (
+                          <Button
+                            key={item.id}
+                            variant={ButtonVariants.Link}
+                            href={item.content}
+                            selectedPage={selectedPage}
+                            setSelectedPage={setSelectedPage}
+                          >
+                            {item.content}
+                          </Button>
+                        )
+                      })
+                    }
                   </div>
 
                   <div className={`${flexBetween} gap-8`}>
@@ -106,31 +105,22 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           </div>
 
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href="Home"
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Home</Button>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href="Benefits"
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Benefits</Button>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href={"Our Classes"}
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Our Classes</Button>
-                    <Button
-                      variant={ButtonVariants.Link}
-                      href="Contact"
-                      selectedPage={selectedPage}
-                      setSelectedPage={setSelectedPage}
-                    >Contact</Button>
-                  </div>
+          {
+            menu.map((item) => {
+              return (
+                <Button
+                  key={item.id}
+                  variant={ButtonVariants.Link}
+                  href={item.content}
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                >
+                  {item.content}
+                </Button>
+              )
+            })
+          }
+          </div>
         </section>
       )}
     </nav>

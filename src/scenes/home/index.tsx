@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion'
+
 import Button from '@/components/Button'
 
-import { ButtonVariants, SelectedPage } from "@/shared/types"
+import { ButtonVariants, SelectedPage, Sponsor } from "@/shared/types"
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 import HomePageText from '@/assets/HomePageText.png'
@@ -21,21 +23,46 @@ const Home = ({ setSelectedPage }: Props) => {
       id="home"
       className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0"
     >
-      <div className="">
-        <section>
-          <article>
-            <header>
-              <figure>
+      <motion.div
+        className="md:flex mx-auto w-5/6 max-w-[1200px] items-center justify-center md:h-5/6"
+        onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
+      >
+        <section className="z-10 mt-32 md:basis-3/5">
+          <motion.div
+            className="md:-mt-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0 }
+            }}
+          >
+            <header className="relative">
+              <figure className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
                 <img src={HomePageText} alt="home-page-text" />
               </figure>
             </header>
-            <p className="">
+
+            <p className="mt-8 text-sm">
               Unrivaled Gym. Unparalleled Training Fitness Classes. World Class
               Studios to get the Body Shapes That you Dream of.. Get Your Dream
               Body Now.
             </p>
-          </article>
-          <article>
+          </motion.div>
+
+          <motion.div
+            className="mt-8 flex items-center gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0 }
+            }}
+          >
             <Button
               variant={ButtonVariants.Action}
               href={SelectedPage.ContactUs}
@@ -52,20 +79,23 @@ const Home = ({ setSelectedPage }: Props) => {
             >
               <p>Learn More</p>
             </Button>
-          </article>
+          </motion.div>
         </section>
-        <figure>
+
+        <figure className="flex basis-3/5 justify-center
+          z-10 md:ml-40 md:mt-16 md:justify-items-end"
+        >
           <img src={HomePageGraphic} alt="home-page-graphic" />
         </figure>
-      </div>
+      </motion.div>
       {
         isAboveMediumScreens && (
-          <section>
-            <div>
-              <figure>
-                  <img src={SponsorRedBull} alt="redbull-sponsor" />
-                  <img src={SponsorForbes} alt="forbes-sponsor" />
-                  <img src={SponsorFortune} alt="fortune-sponsor" />
+          <section className="h-[150px] w-full bg-primary-100 py-10">
+            <div className="mx-auto w-5/6 max-w-[1200px]">
+              <figure className="flex w-3/5 items-center justify-between mx-auto">
+                  <a href={Sponsor.Redbull}><img src={SponsorRedBull} alt="redbull-sponsor" /></a>
+                  <a href={Sponsor.Forbes}><img src={SponsorForbes} alt="forbes-sponsor" /></a>
+                  <a href={Sponsor.Fortune}><img src={SponsorFortune} alt="fortune-sponsor" /></a>
               </figure>
             </div>
           </section>

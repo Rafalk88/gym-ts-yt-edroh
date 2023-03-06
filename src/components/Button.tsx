@@ -9,6 +9,7 @@ type Props = {
   href: String
   selectedPage?: SelectedPage
   setSelectedPage: (value: SelectedPage) => void
+  [otherProps: string]: any
 }
 
 const Button = ({children, variant, href, selectedPage, setSelectedPage, ...otherProps}: Props) => {  

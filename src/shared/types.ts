@@ -18,3 +18,9 @@ export enum Sponsor {
   Forbes = 'https://www.forbes.pl',
   Fortune = 'https://fortune.com'
 }
+
+export interface BenefitType {
+  icon: JSX.Element
+  title: String
+  description: String
+}
